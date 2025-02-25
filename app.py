@@ -1,3 +1,4 @@
+import os
 import dash
 from dash import html
 import dash_bootstrap_components as dbc
@@ -17,4 +18,6 @@ register_callbacks(app)
 server = app.server
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    # Lấy PORT từ biến môi trường, mặc định 8050 nếu không có
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(host="0.0.0.0", port=port, debug=False)
